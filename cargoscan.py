@@ -1,3 +1,4 @@
+#!/usr/bin/env python2
 from __future__ import print_function
 
 import serial_led
@@ -5,8 +6,11 @@ import random
 import pygame as pg
 import argparse
 import draw
+import os
 
 ports = serial_led.SerialLedController.port_list()
+
+default_alarm = os.path.join(os.path.split(os.path.realpath(__file__))[0], 'alarm.wav')
 
 parser = argparse.ArgumentParser(
     description='Scan for explosives and guns! The station will be safe with your awesome scanning gear, officer.')
@@ -16,7 +20,7 @@ parser.add_argument('-s','--speed', type=int, default=9600, required=False,
 parser.add_argument('-F','--fullscreen', action='store_true', default=False, required=False,
                     help='Run in fullscreen')
 parser.add_argument('-f','--fps', type=int, default=30, required=False,help='Aim for FPS')
-parser.add_argument('-a', '--alarm', default='alarm.wav', required=False, help='Alarm sound file')
+parser.add_argument('-a', '--alarm', default=default_alarm, required=False, help='Alarm sound file')
 
 args = parser.parse_args()
 
