@@ -4,7 +4,7 @@ import random
 import os
 
 
-font = os.path.join(os.path.split(os.path.realpath(__file__))[0], 'AUDIMSCB.ttf')
+font = os.path.join(os.path.split(os.path.realpath(__file__))[0], 'digital-7_(mono).ttf')
 
 digits_font = None
 tresh_font = None
@@ -101,7 +101,8 @@ def reds(screen, reds, treshold):
     if digits_font is None:
         digits_font = pg.font.Font(font, 72)
     label = digits_font.render("{}".format(reds), True, (0,255,0) if reds < treshold else (255,0,0))
-    tw, th = label.get_size()
+    m = digits_font.render("0", True, (0, 0, 0))
+    tw, th = m.get_size()
     screen.blit(label, (w*5//6-tw//2, h//6-th//2))
 
 
@@ -111,7 +112,8 @@ def tresh(screen, treshold):
     if tresh_font is None:
         tresh_font = pg.font.Font(font, 72)
     label = tresh_font.render("{}".format(treshold), True, (200,200,200))
-    tw, th = label.get_size()
+    m = tresh_font.render("0", True, (0, 0, 0))
+    tw, th = m.get_size()
     screen.blit(label, (w*5//6-tw//2, h//12*4-th//2))
 
 
@@ -120,7 +122,9 @@ def mode(screen, string):
     w, h = screen.get_size()
     if mode_font is None:
         mode_font = pg.font.Font(font, 14)
+    m = mode_font.render("0", True, (0, 0, 0))
+    tw, th = m.get_size()
     for i in range(len(string)):
         label = mode_font.render("{}".format(string[i]), True, (255,255,255))
-        tw, th = label.get_size()
+        tw, _ = label.get_size()
         screen.blit(label, (w*5//6-tw//2, h//6*3+th//2*3*i-th//2))

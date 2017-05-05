@@ -80,7 +80,7 @@ def colors_for_segments(segments):
 
 
 def random_mode():
-    return "0b" + "".join([str(random.randint(0,1)) for x in range(8)])
+    return "".join([str(random.randint(0,1)) for x in range(8)])
 
 try:
     pg.init()
@@ -125,13 +125,13 @@ try:
     }
 
     mode_bits = {
-        'NORMAL':'0b00111010',
-        'HIGH':'0b11011111',
-        'LOW':'0b00001000',
-        'TOP':'0b10000000',
-        'MIDDLE':'0b00110000',
-        'BOTTOM':'0b00000001',
-        'FUNERAL': '0b01010110',
+        'NORMAL':'00111010',
+        'HIGH':'11011111',
+        'LOW':'00001000',
+        'TOP':'10000000',
+        'MIDDLE':'00110000',
+        'BOTTOM':'00000001',
+        'FUNERAL': '01010110',
     }
 
     mode = 'NORMAL'
@@ -207,7 +207,7 @@ try:
         draw.reds(screen, reds, treshold)
         draw.tresh(screen, treshold)
 
-        draw.mode(screen, ["0b00001011","0b01000110", mode_bits[mode], rm1, rm2, rm3 ])
+        draw.mode(screen, ["00001011","01000110", mode_bits[mode], rm1, rm2, rm3 ])
 
         if set_leds:
             if reds >= treshold:
